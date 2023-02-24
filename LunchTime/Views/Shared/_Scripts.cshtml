@@ -1,0 +1,116 @@
+﻿<script src="~/lib/unpoly/unpoly.js"></script>
+<script src="~/lib/sweetalert2/dist/sweetalert2.js"></script>
+
+<script type="module" src="~/js/index.js"></script>
+
+<script type="text/javascript">
+    up.log.enable()
+    
+    up.network.config.cacheExpiry=10000
+    //up.radio.config.pollEnabled=false
+    up.fragment.config.runScripts = true
+
+    window.addEventListener("load", (event) => {
+        pi.console.enable();
+        pi.console.logTag("Window loaded");
+    });
+
+    up.on("up:request:fatal", function(event, _) {
+        pi.console.group("Fatal Request");
+        pi.console.log("event", event);
+
+        event.preventDefault();
+        pi.alert.fatal();
+
+        pi.console.groupEnd("Fatal Request");
+    });
+
+    up.transition('custom', (oldElement, newElement, options) => {
+        pi.console.group("Custom Transition");
+
+        pi.console.log("oldElement", oldElement);
+        pi.console.log("newElement", newElement);
+
+        const navigationOrderHorizontal = [
+            "Home",
+            "Appointment",
+            "Locality",
+            "Restaurant"];
+
+        const defaultRoute = "/Home";
+        const from = oldElement.getAttribute("up-source") ?? defaultRoute;
+        const to = newElement.getAttribute("up-source") ?? defaultRoute;
+
+        pi.console.log("from", from);
+        pi.console.log("to", to);
+
+        const [ignore, ...fromParts] = from.split("/").map(part => part === "" ? "Home": part);
+        const [ignore2, ...toParts] = to.split("/").map(part => part === "" ? "Home": part);
+        pi.console.log("fromParts", fromParts);
+        pi.console.log("toParts", toParts);
+
+        if (fromParts.length === 0 || toParts.length === 0) {
+            return Promise.all([
+                up.animate(oldElement, 'none', options),
+                up.animate(newElement, 'none', options)
+            ]);
+        }
+
+        const toIndexHorizontal = navigationOrderHorizontal.findIndex((s) => toParts[0].includes(s));
+        const fromIndexHorizontal = navigationOrderHorizontal.findIndex((s) => fromParts[0].includes(s));
+
+        pi.console.log("toIndexHorizontal", toIndexHorizontal);
+        pi.console.log("fromIndexHorizontal", fromIndexHorizontal);
+
+        const isToRightOfFrom = () => toIndexHorizontal > fromIndexHorizontal;
+        const isToLeftOfFrom = () => toIndexHorizontal < fromIndexHorizontal;
+
+        const animationDurationMs = 750;
+        pi.console.groupEnd("Custom Transition");
+
+        if (isToRightOfFrom()) {
+            pi.console.logTag("up-transition", "isToRightOfFrom")
+
+            return Promise.all([
+                up.animate(oldElement, 'move-to-left', { ...options, duration: animationDurationMs }),
+                up.animate(newElement, 'move-from-right', { ...options, duration: animationDurationMs })
+            ]);
+        } else if (isToLeftOfFrom()) {
+            pi.console.logTag("up-transition", "isToLeftOfFrom")
+
+            return Promise.all([
+                up.animate(oldElement, 'move-to-right', { ...options, duration: animationDurationMs }),
+                up.animate(newElement, 'move-from-left', { ...options, duration: animationDurationMs })
+            ]);
+        } else {
+
+            // Check vertical order
+            const fromIndexVertical = fromParts.length;
+            const toIndexVertical = toParts.length;
+
+            const isToTopFromBottom = () => toIndexVertical > fromIndexVertical
+            const isToBottomFromTop = () => toIndexVertical < fromIndexVertical
+
+            if (isToTopFromBottom()) {
+                pi.console.logTag("up-transition", "isToTopFromBottom")
+                return Promise.all([
+                    up.animate(oldElement, 'move-to-top', { ...options, duration: animationDurationMs }),
+                    up.animate(newElement, 'move-from-bottom', { ...options, duration: animationDurationMs })
+                ]);
+            } else if (isToBottomFromTop()) {
+                pi.console.logTag("up-transition", "isToBottomFromTop")
+                return Promise.all([
+                    up.animate(oldElement, 'move-to-bottom', { ...options, duration: animationDurationMs }),
+                    up.animate(newElement, 'move-from-top', { ...options, duration: animationDurationMs })
+                ]);
+            } else {
+                pi.console.logTag("up-transition", "none")
+
+                return Promise.all([
+                    up.animate(oldElement, 'none', options),
+                    up.animate(newElement, 'none', options)
+                ]);
+            }
+        }
+    });
+</script>

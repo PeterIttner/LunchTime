@@ -1,0 +1,20 @@
+﻿@using LunchTime.Models.Locality.ViewModel
+@{
+    @model LocalityEditor
+}
+
+@Html.ValidationSummary(true)
+
+<div class="grid">
+    <label asp-for="Name">
+        @Html.DisplayNameFor(m => m.Name)
+        <input asp-for="Name" type="text" placeholder="Küche EG" value="@Model.Name" />
+        <span asp-validation-for="Name" aria-invalid="true" class="error"></span>
+    </label>
+
+      <label asp-for="AvailableSeats">
+        @Html.DisplayNameFor(m => m.AvailableSeats)
+        <input asp-for="AvailableSeats" type="text" placeholder="10" value="@Model.AvailableSeats" />
+        <span asp-validation-for="AvailableSeats" aria-invalid="true" class="error"></span>
+    </label>
+</div>

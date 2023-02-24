@@ -1,0 +1,64 @@
+﻿@using LunchTime.Models.Appointment.ViewModels
+@{
+    @model AppointmentEditor
+}
+
+@Html.ValidationSummary(true)
+
+<div class="grid">
+    <label asp-for="Name">
+        @Html.DisplayNameFor(m => m.Name)
+        <input asp-for="Name" type="text" placeholder="Mittagessen" value="@Model.Name" />
+        <span asp-validation-for="Name" aria-invalid="true" class="error"></span>
+    </label>
+</div>
+
+<div class="grid">
+    <label asp-for="MealTitle">
+        @Html.DisplayNameFor(m => m.MealTitle)
+        <input asp-for="MealTitle" type="text" placeholder="Eintopf" value="@Model.MealTitle" />
+        <span asp-validation-for="MealTitle" aria-invalid="true" class="error"></span>
+    </label>
+
+    <label asp-for="MealDescription">
+        @Html.DisplayNameFor(m => m.MealDescription)
+        <input asp-for="MealDescription" type="text" placeholder="Geburtstagseinladung" value="@Model.MealDescription" />
+        <span asp-validation-for="MealDescription" aria-invalid="true" class="error"></span>
+    </label>
+</div>
+
+<div class="grid localities">
+    <label asp-for="AvailableLocalities">
+        @Html.DisplayNameFor(m => m.AvailableLocalities)
+        <a asp-controller="Locality"
+                           asp-action="Create"
+                           up-layer="new"
+                           up-size="medium"
+                           up-location="false"
+                           up-instant
+                           up-target=".content"
+                           up-on-accepted="up.reload('.localities') && alerts.created('Örtlichkeit')">
+                            <small><i class="fa-regular fa-square-plus"></i></small>
+        </a>
+
+        <select asp-for="SelectedLocalityId" asp-items="Model.AvailableLocalities">
+            <option value="">Bitte auswählen</option>
+        </select>
+        <span asp-validation-for="AvailableLocalities" aria-invalid="true" class="error"></span>
+    </label>
+</div>
+
+
+<div class="grid">
+    <label asp-for="StartTime">
+        @Html.DisplayNameFor(m => m.StartTime)
+        <input asp-format="{0:yyyy-MM-ddTHH:mm}" asp-for="StartTime" type="datetime-local" />
+        <span asp-validation-for="StartTime" aria-invalid="true" class="error"></span>
+    </label>
+
+    <label asp-for="EndTime">
+        @Html.DisplayNameFor(m => m.EndTime)
+        <input asp-format="{0:yyyy-MM-ddTHH:mm}" asp-for="EndTime" type="datetime-local" />
+        <span asp-validation-for="EndTime" aria-invalid="true" class="error"></span>
+    </label>
+</div>

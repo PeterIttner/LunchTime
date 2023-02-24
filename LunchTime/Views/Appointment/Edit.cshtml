@@ -1,0 +1,18 @@
+﻿@using LunchTime.Models.Appointment.ViewModels
+
+@{
+    ViewData["Title"] = "Verabredung Bearbeiten";
+    @model AppointmentEditor
+
+}
+<article>
+    <h2>Verabredung Bearbeiten</h2>
+
+    <form asp-controller="Appointment" asp-action="Edit" method="POST" up-submit>
+        <input asp-for="Id" type="hidden" value="@Model.Id" />
+        
+        <partial name="_Editor" model="@Model" />
+        
+        <button type="submit">Speichern</button>
+    </form>
+</article>

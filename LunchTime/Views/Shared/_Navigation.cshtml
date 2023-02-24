@@ -1,0 +1,74 @@
+﻿<ul>
+    <li>
+        <a asp-area=""
+           asp-controller="Home"
+           asp-action="Index"
+           up-follow
+           up-transition="custom"
+           up-preload
+           up-instant>
+            Home
+        </a>
+    </li>
+    <li>
+        <a asp-area=""
+           asp-controller="Appointment"
+           asp-action="Index"
+           up-follow
+           up-instant
+           up-preload
+           up-transition="custom">
+            Verabredungen
+        </a>
+    </li>
+    <li>
+        <a asp-area=""
+           asp-controller="Locality"
+           asp-action="Index"
+           up-follow
+           up-transition="custom"
+           up-preload
+           up-instant>
+            Örtlichkeiten
+        </a>
+    </li>
+    <li role="list"
+        dir="rtl">
+
+        <a asp-area=""
+           asp-controller="Restaurant"
+           asp-action="Index"
+           up-follow
+           up-transition="custom"
+           up-preload
+           up-instant>
+            Restaurants
+        </a>
+        <ul role="listbox">
+            <li>
+                <a asp-area=""
+                   asp-controller="Restaurant"
+                   asp-action="Index"
+                   up-follow
+                   up-transition="custom"
+                   up-preload
+                   up-instant>
+                    <i class="fa fa-list"></i>
+                    Übersicht
+                </a>
+            </li>
+            <li>
+                <a asp-controller="Restaurant"
+                   asp-action="Create"
+                   up-layer="new"
+                   up-size="large"
+                   up-location="false"
+                   up-target=".content"
+                   up-instant
+                   up-on-accepted="up.reload('.content') && pi.alert.created('Restaurant')">
+                    <i class="fa fa-add"></i> Neues Restaurant erstellen
+                </a>
+            </li>
+        </ul>
+    </li>
+</ul>

@@ -1,0 +1,15 @@
+﻿@using LunchTime.Models.Restaurant.ViewModel
+@{
+    ViewData["Title"] = "Restaurant Erstellen";
+    @model RestaurantEditor
+
+}
+<article>
+    <h2>Restaurant Erstellen</h2>
+
+    <form asp-controller="Restaurant" asp-action="Create" method="POST" up-submit>
+       <partial name="_Editor" model="@Model" />
+
+        <button type="submit">Speichern</button>
+    </form>
+</article>

@@ -1,0 +1,77 @@
+﻿@using LunchTime.Models.Restaurant.ViewModel
+@{
+    @model ICollection<RestaurantViewer>
+
+}
+
+@if (!Model.Any()) {
+
+    <p>Keine Restaurants vorhanden</p>
+
+} else {
+
+    <table role="grid">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Link</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var restaurant in Model)
+            {
+                <tr>
+                    <td >@restaurant.Name</td>
+                    <td>
+                        <a rel="external" target="_blank" href="@restaurant.Link">
+                            @restaurant.Link
+                        </a>
+                    </td>
+                    <td>
+                        <a asp-controller="Restaurant"
+                           asp-action="Delete"
+                           asp-route-id="@restaurant.Id"
+                           role="button"
+                           up-layer="new"
+                           up-size="medium"
+                           up-location="false"
+                           up-instant
+                           up-target=".content"
+                           up-on-accepted="up.reload('.content') && pi.alert.deleted('Restaurant')">
+                            <i class="fa fa-trash"></i>
+                        </a>
+
+                        <a asp-controller="Restaurant"
+                           asp-action="Edit"
+                           asp-route-id="@restaurant.Id"
+                           role="button"
+                           up-layer="new"
+                           up-size="medium"
+                           up-instant
+                           up-target=".content"
+                           up-location="false"
+                           up-on-accepted="up.reload('.content') && pi.alert.updated('Restaurant')">
+                            <i class="fa fa-edit"></i>
+                        </a>
+
+                        <a asp-controller="Restaurant"
+                           asp-action="Details"
+                           asp-route-id="@restaurant.Id"
+                           role="button"
+                           up-layer="new"
+                           up-instant
+                           up-target=".content"
+                           up-size="medium"
+                           up-location="false">
+                            <i class="fa fa-magnifying-glass"></i>
+                        </a>
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+
+}

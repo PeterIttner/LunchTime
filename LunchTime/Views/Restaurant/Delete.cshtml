@@ -1,0 +1,17 @@
+﻿@using LunchTime.Models.Restaurant.ViewModel
+@{
+    ViewData["Title"] = "Restaurant Löschen";
+    @model RestaurantViewer
+}
+
+<article>
+    <h2>Restaurant Löschen</h2>
+    <p>Möchten Sie das Restaurant "@Model.Name" wirklich löschen?</p>
+
+    <form asp-controller="Restaurant" asp-action="DeleteConfirmed" method="POST" up-submit>
+        <input asp-for="Id" type="hidden" value="@Model.Id" />
+        @Html.ValidationSummary(true)
+
+        <button type="submit">Löschen</button>
+    </form>
+</article>

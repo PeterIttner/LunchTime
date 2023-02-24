@@ -1,0 +1,22 @@
+﻿@using System.Security.Principal
+
+<div class="account">
+    <small>
+    @if (User.Identity?.IsAuthenticated == true)
+    {
+        <i class="fa-solid fa-user"></i> @User.Identity?.Name
+        <a asp-area="MicrosoftIdentity"
+       asp-controller="Account"
+       asp-action="SignOut"
+       rel="external">
+       <i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+    }
+    else
+    {
+        <a asp-area="MicrosoftIdentity"
+       asp-controller="Account"
+       asp-action="SignIn"
+       rel="external">Sign in</a>
+    }
+    </small>
+</div>

@@ -1,0 +1,30 @@
+﻿@using LunchTime.Models.Appointment.ViewModels
+
+@{
+    ViewData["Title"] = "Verabredungen Übersicht";
+    @model ICollection<AppointmentViewer>
+
+}
+
+
+
+
+
+<section>
+    <a asp-controller="Appointment"
+       asp-action="Create"
+       role="button"
+       up-layer="new"
+       up-size="large"
+       up-location="false"
+       up-target=".content"
+       up-instant
+       up-on-accepted="up.reload('.content') && pi.alert.created('Verabredung')">
+        <i class="fa fa-add"></i> Neue Verabredung erstellen
+    </a>
+</section>
+
+<section>
+    <h2>Verabredungen Übersicht</h2>
+    <partial name="_OverviewTable" model="@Model" />
+</section>

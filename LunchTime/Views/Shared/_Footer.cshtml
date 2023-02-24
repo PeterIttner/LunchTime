@@ -1,0 +1,25 @@
+﻿<div class="side-panel"
+     up-poll
+     up-interval="500"
+     up-source="/Appointment/Upcoming">
+    <progress></progress>
+</div>
+
+<div class="footer__infoline">
+    <div class="footer__infoline--imprint">
+        <small>
+            &copy; 2023 - LunchTime -
+            <a asp-area=""
+               asp-controller="Home"
+               asp-action="Privacy"
+               up-follow
+               up-transition="custom"
+               up-instant>
+                Impressum
+            </a>
+        </small>
+    </div>
+    <div class="footer__infoline--account">
+        <partial name="_Account" />
+    </div>
+</div>

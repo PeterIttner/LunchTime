@@ -1,0 +1,17 @@
+﻿@using LunchTime.Models.Locality.ViewModel
+@{
+    ViewData["Title"] = "Örtlichkeit Bearbeiten";
+    @model LocalityEditor
+
+}
+<article>
+    <h2>Örtlichkeit Bearbeiten</h2>
+
+    <form asp-controller="Locality" asp-action="Edit" method="POST" up-submit>
+        <input asp-for="Id" type="hidden" value="@Model.Id" />
+        
+        <partial name="_Editor" model="@Model" />
+        
+        <button type="submit">Speichern</button>
+    </form>
+</article>

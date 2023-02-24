@@ -1,0 +1,5 @@
+﻿@model string
+
+<form asp-action="Filter" asp-controller="Appointment" method="GET" up-submit up-autosubmit up-delay="300">
+    <input name="query" type="search" maxlength="30" value="@Model" placeholder="Suche" up-focus="auto" autofocus />
+</form>

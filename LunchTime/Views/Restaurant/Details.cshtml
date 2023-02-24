@@ -1,0 +1,44 @@
+﻿@using LunchTime.Models.Restaurant.ViewModel
+@{
+    ViewData["Title"] = "Restaurant Details";
+    @model RestaurantViewer
+
+}
+<article>
+    <h2>Restaurant Details</h2>
+
+    <table role="grid">
+        <tr>
+            <th>@Html.DisplayNameFor(m => m.Id)</th>
+            <td>@Model.Id</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(m => m.Name)</th>
+            <td>@Model.Name</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(m => m.Link)</th>
+            <td>@Model.Link</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(m => m.Street)</th>
+            <td>@Model.Street</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(m => m.StreetNumber)</th>
+            <td>@Model.StreetNumber</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(m => m.Postcode)</th>
+            <td>@Model.Postcode</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(m => m.City)</th>
+            <td>@Model.City</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(m => m.Phone)</th>
+            <td>@Model.Phone</td>
+        </tr>
+    </table>
+</article>

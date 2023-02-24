@@ -1,0 +1,52 @@
+{
+  "version": "1.0",
+  "defaultProvider": "unpkg",
+  "libraries": [
+    {
+      "library": "unpoly@2.7.1",
+      "destination": "wwwroot/lib/unpoly/",
+      "files": [
+        "unpoly.js",
+        "unpoly.css"
+      ]
+    },
+
+    {
+      "provider": "cdnjs",
+      "library": "font-awesome@6.3.0",
+      "destination": "wwwroot/lib/font-awesome/",
+      "files": [
+        "css/all.css"
+      ]
+    },
+    {
+      "provider": "cdnjs",
+      "library": "font-awesome@6.3.0",
+      "destination": "wwwroot/lib/font-awesome/",
+      "files": [
+        "css/all.css",
+        "js/all.js",
+        "sprites/regular.svg",
+        "sprites/solid.svg",
+        "sprites/brands.svg",
+        "webfonts/fa-brands-400.woff2",
+        "webfonts/fa-regular-400.woff2",
+        "webfonts/fa-solid-900.woff2",
+        "webfonts/fa-v4compatibility.woff2"
+      ]
+    },
+    {
+      "provider": "jsdelivr",
+      "library": "sweetalert2@11.7.2",
+      "destination": "wwwroot/lib/sweetalert2/"
+    },
+    {
+      "provider": "unpkg",
+      "library": "@picocss/pico@1.5.7",
+      "destination": "wwwroot/lib/picocss/pico/",
+      "files": [
+        "css/pico.css"
+      ]
+    }
+  ]
+}

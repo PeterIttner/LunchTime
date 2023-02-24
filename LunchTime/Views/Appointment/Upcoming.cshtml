@@ -1,0 +1,32 @@
+﻿@using LunchTime.Models.Appointment.ViewModels
+
+@{
+    @model ICollection<AppointmentViewer>
+    int pollingIntervalMs = 10 * 1000;
+}
+<div class="side-panel" up-poll up-interval="@pollingIntervalMs" up-source="/Appointment/Upcoming">
+    <div class="upcoming-appointments">
+        @if (!Model.Any())
+        {
+
+            <p>Keine anstehenden Verabredungen</p>
+
+        }
+        else
+        {
+            <div class="newsfeed">
+                <span class="appointment-header"><i class="fa-regular fa-calendar-check"></i> Demnächst</span>
+
+                <div class="appointment-list">
+                    @foreach (var appointment in Model)
+                    {
+                        <span class="appointment">
+                            <time datetime="@appointment.StartTime">@appointment.StartTime.ToShortTimeString()</time>
+                            <span>@appointment.Name</span>
+                        </span>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+</div>

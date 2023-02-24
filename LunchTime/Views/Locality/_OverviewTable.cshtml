@@ -1,0 +1,64 @@
+﻿@using LunchTime.Models.Locality.ViewModel
+@{
+    @model ICollection<LocalityViewer>
+
+}
+
+@if (!Model.Any()) {
+
+    <p>Keine Örtlichkeiten vorhanden</p>
+
+} else {
+
+    <div asp-></div>
+    <table role="grid">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Anzahl Sitzplätze</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var locality in Model)
+            {
+                <tr>
+                    <td >@locality.Name</td>
+                    <td>
+                        @locality.AvailableSeats
+                    </td>
+                    <td>
+                        <a asp-controller="Locality"
+                           asp-action="Delete"
+                           asp-route-id="@locality.Id"
+                           role="button"
+                           up-layer="new"
+                           up-size="medium"
+                           up-location="false"
+                           up-target=".content"
+                           up-instant
+                           up-on-accepted="up.reload('.content') && pi.alert.deleted('Örtlichkeit')">
+                            <i class="fa fa-trash"></i>
+                        </a>
+
+                        <a asp-controller="Locality"
+                           asp-action="Edit"
+                           asp-route-id="@locality.Id"
+                           role="button"
+                           up-layer="new"
+                           up-size="medium"
+                           up-location="false"
+                           up-target=".content"
+                           up-instant
+                           up-on-accepted="up.reload('.content') && pi.alert.updated('Örtlichkeit')">
+                            <i class="fa fa-edit"></i>
+                        </a>
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+
+}

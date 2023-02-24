@@ -1,0 +1,56 @@
+﻿@using LunchTime.Models.Restaurant.ViewModel
+@{
+    @model RestaurantEditor
+}
+
+@Html.ValidationSummary(true)
+
+<div class="grid">
+    <label asp-for="Name">
+        @Html.DisplayNameFor(m => m.Name)
+        <input asp-for="Name" type="text" placeholder="Restaurant Name" value="@Model.Name" />
+        <span asp-validation-for="Name" aria-invalid="true" class="error"></span>
+    </label>
+</div>
+
+    <div class="grid">
+        <label asp-for="Link">
+        @Html.DisplayNameFor(m => m.Link)
+        <input asp-for="Link" type="text" placeholder="https://www.my-restaurant.com" value="@Model.Link" />
+        <span asp-validation-for="Link" aria-invalid="true" class="error"></span>
+    </label>
+
+    <label asp-for="Phone">
+        @Html.DisplayNameFor(m => m.Phone)
+        <input asp-for="Phone" type="text" placeholder="0911 / 123456" value="@Model.Phone" />
+        <span asp-validation-for="Phone" aria-invalid="true" class="error"></span>
+    </label>
+</div>
+
+<div class="grid">
+    <label asp-for="Street">
+        @Html.DisplayNameFor(m => m.Street)
+        <input asp-for="Street" type="text" placeholder="Hauptstraße" value="@Model.Street" />
+        <span asp-validation-for="Street" aria-invalid="true" class="error"></span>
+    </label>
+
+    <label asp-for="StreetNumber">
+        @Html.DisplayNameFor(m => m.StreetNumber)
+        <input asp-for="StreetNumber" type="text" placeholder="42a" value="@Model.StreetNumber" />
+        <span asp-validation-for="StreetNumber" aria-invalid="true" class="error"></span>
+    </label>
+</div>
+
+    <div class="grid">
+    <label asp-for="Postcode">
+        @Html.DisplayNameFor(m => m.Postcode)
+        <input asp-for="Postcode" type="text" placeholder="90413" value="@Model.Postcode" />
+        <span asp-validation-for="Postcode" aria-invalid="true" class="error"></span>
+    </label>
+
+    <label asp-for="City">
+        @Html.DisplayNameFor(m => m.City)
+        <input asp-for="City" type="text" placeholder="Nürnberg" value="@Model.City" />
+        <span asp-validation-for="City" aria-invalid="true" class="error"></span>
+    </label>
+</div>

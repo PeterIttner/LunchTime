@@ -1,0 +1,26 @@
+﻿@using LunchTime.Models.Locality.ViewModel
+@{
+    ViewData["Title"] = "Örtlichkeiten Übersicht";
+    @model ICollection<LocalityViewer>
+
+}
+
+<section>
+    <a asp-controller="Locality"
+       asp-action="Create"
+       role="button"
+       up-layer="new"
+       up-size="large"
+       up-location="false"
+       up-target=".content"
+       up-instant
+       up-on-accepted="up.reload('.content') && pi.alert.created('Örtlichkeit')">
+        <i class="fa fa-add"></i> Neue Örtlichkeit erstellen
+    </a>
+</section>
+
+<section>
+
+    <h2>Örtlichkeiten Übersicht</h2>
+    <partial name="_OverviewTable" model="@Model" />
+</section>

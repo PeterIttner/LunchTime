@@ -1,0 +1,68 @@
+﻿@using LunchTime.Models.Appointment.ViewModels
+
+@{
+    @model ICollection<AppointmentViewer>
+
+}
+
+<partial name="_Filter" model="@ViewBag.Query" />
+
+<div class="appointments">  
+
+    @if (!Model.Any())
+    {
+
+        <p>Keine Verabredungen vorhanden</p>
+
+    }
+    else
+    {
+        <table role="grid">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Mahlzeit</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var appointment in Model)
+                {
+                    <tr>
+                        <td>@appointment.Name</td>
+                        <td>@appointment.MealTitle (@appointment.MealDescription)</td>
+                        <td>
+                            <a asp-controller="Appointment"
+                       asp-action="Delete"
+                       asp-route-id="@appointment.Id"
+                       role="button"
+                       up-layer="new"
+                       up-size="medium"
+                       up-location="false"
+                       up-target=".content"
+                       up-instant
+                       up-on-accepted="up.reload('.content') && pi.alert.deleted('Verabredung')">
+                                <i class="fa fa-trash"></i>
+                            </a>
+
+                            <a asp-controller="Appointment"
+                       asp-action="Edit"
+                       asp-route-id="@appointment.Id"
+                       role="button"
+                       up-layer="new"
+                       up-size="medium"
+                       up-location="false"
+                       up-target=".content"
+                       up-instant
+                       up-on-accepted="up.reload('.content') && pi.alert.updated('Verabredung')">
+                                <i class="fa fa-edit"></i>
+                            </a>
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    }
+</div>

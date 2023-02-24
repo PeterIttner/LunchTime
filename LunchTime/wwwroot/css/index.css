@@ -1,0 +1,153 @@
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+}
+
+nav a.up-current {
+    text-shadow: 1px 1px grey;
+}
+
+span.error {
+    color: #cc2626;
+}
+
+
+
+div.validation-summary-errors > ul {
+    list-style-type: none;
+    padding: 0;
+    color: #cc2626;
+}
+
+    div.validation-summary-errors > ul li {
+        list-style-type: none;
+    }
+
+a[rel="external"] {
+    border-bottom: 1px solid;
+    text-decoration: none;
+}
+
+    a[rel="external"]:after {
+        content: "\00a0\00a0\f08e";
+        font-family: FontAwesome;
+        font-size: 0.7em;
+        line-height: 1;
+        padding-left: 1px;
+    }
+
+nav[aria-label="breadcrumb"] > ul > li {
+    font-size: 0.9rem;
+}
+
+img.nav-logo {
+    height: 150px;
+    margin: auto;
+    display: block;
+}
+
+up-modal-dismiss[role="link"]:hover {
+    text-decoration: none;
+}
+
+.truncated {
+    width: 100px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+a {
+    text-decoration: none;
+}
+
+.theme-toggler {
+    position: absolute;
+    right: 40px;
+    top: 10px;
+    width: 30px;
+    height: 30px;
+}
+
+.upcoming-appointments {
+    border-top: 1px dashed var(--primary, white);
+    border-bottom: 1px dashed var(--primary, white);
+    padding: 10px;
+}
+
+.appointment time {
+    font-style: italic;
+    font-size: small;
+    border: 1px solid var(--primary, white);
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+}
+
+
+.appointment-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.appointment-header {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 5px;
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+html, body {
+    height: 100vh;
+}
+
+    body > footer {
+        position: sticky;
+        top: 100vh;
+        padding: 10px;
+    }
+
+.newsfeed {
+    display: flex;
+    align-content: center;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+.side-panel {
+    margin-bottom: 10px;
+}
+
+.account {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+}
+
+.footer__infoline {
+    display: flex;
+    justify-content: space-between;
+}

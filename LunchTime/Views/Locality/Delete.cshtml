@@ -1,0 +1,18 @@
+﻿@using LunchTime.Models.Locality.ViewModel
+@{
+    ViewData["Title"] = "Örtlichkeit Löschen";
+    @model LocalityViewer
+}
+
+<article>
+    <h2>Örtlichkeit Löschen</h2>
+    <p>Möchten Sie das Örtlichkeit "@Model.Name" wirklich löschen?</p>
+
+    <form asp-controller="Locality" asp-action="DeleteConfirmed" method="POST" up-submit>
+        <input asp-for="Id" type="hidden" value="@Model.Id" />
+
+        @Html.ValidationSummary(true)
+
+        <button type="submit">Löschen</button>
+    </form>
+</article>

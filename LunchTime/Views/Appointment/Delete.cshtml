@@ -1,0 +1,18 @@
+﻿@using LunchTime.Models.Appointment.ViewModels
+
+@{
+    ViewData["Title"] = "Verabredung Löschen";
+    @model AppointmentViewer
+}
+
+<article>
+    <h2>Verabredung Löschen</h2>
+    <p>Möchten Sie die Verabredung "@Model.Name" wirklich löschen?</p>
+
+    <form asp-controller="Appointment" asp-action="DeleteConfirmed" method="POST" up-submit>
+        <input asp-for="Id" type="hidden" value="@Model.Id" />
+        @Html.ValidationSummary(true)
+
+        <button type="submit">Löschen</button>
+    </form>
+</article>

@@ -1,0 +1,52 @@
+﻿@using Microsoft.AspNetCore.Identity
+<!DOCTYPE html>
+<html lang="en" data-theme="@ViewData["Theme"]">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="~/image/favion.ico">
+
+    <title>@ViewData["Title"] - LunchTime</title>
+
+    <partial name="_Stylesheets"></partial>
+    <partial name="_Scripts"></partial>
+</head>
+<body>  
+
+        <header>
+
+            <partial name="_ThemeToggle"></partial>
+
+            <img src="~/image/logo-no-background.png" alt="logo" class="nav-logo" />
+            
+            <nav up-nav>
+                <ul>
+                    <li>
+
+                    </li>
+                </ul>
+                <partial name="_Navigation"></partial>
+            </nav>
+            <nav aria-label="breadcrumb" up-nav>
+                <partial name="_Navigation"></partial>
+            </nav>
+        </header>
+
+        <main role="main" class="container-fluid">
+           
+            <div class="content">
+                @RenderBody()
+            </div>
+
+          
+        </main>
+        <footer>
+        <partial name="_Footer"></partial>
+    </footer>
+
+   
+    @await RenderSectionAsync("Scripts", required: false)
+
+
+</body>
+</html>

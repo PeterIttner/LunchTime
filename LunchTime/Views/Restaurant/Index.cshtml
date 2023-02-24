@@ -1,0 +1,26 @@
+﻿@using LunchTime.Models.Restaurant.ViewModel
+@{
+    ViewData["Title"] = "Restaurant Übersicht";
+    @model ICollection<RestaurantViewer>
+
+}
+
+<section>
+    <a asp-controller="Restaurant"
+       asp-action="Create"
+       role="button"
+       up-layer="new"
+       up-size="large"
+       up-location="false"
+       up-target=".content"
+       up-instant
+       up-on-accepted="up.reload('.content') && pi.alert.created('Restaurant')">
+        <i class="fa fa-add"></i> Neues Restaurant erstellen
+    </a>
+</section>
+
+<section>
+
+    <h2>Restaurant Übersicht</h2>
+    <partial name="_OverviewTable" model="@Model" />
+</section>
