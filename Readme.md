@@ -26,6 +26,21 @@
 - Filter SearchBox for long lists
 - Handling of openidconnect Authentication
 
+## Used Upoly Features
+
+- up-layer
+- up-size
+- up-location
+- up-instant
+- up-target
+- up-on-accepted
+- X-Up-Accept-Layer Header
+- X-Up-Target Header
+- up-poll
+- up-interval
+- up-source
+
+
 ## References
 
 - https://unpoly.com/
